@@ -6,10 +6,10 @@ The Robo Reviews Project is a product review aggregator system that uses machine
 
 Features
 Sentiment Classification: Classifies customer reviews into three sentiments:
-
 Positive
 Neutral
 Negative
+
 Meta-Category Classification: Groups product reviews into predefined meta-categories such as:
 
 Ebook Readers
@@ -17,12 +17,14 @@ Batteries
 Accessories
 Tablets
 Non-Electronics
+
 Blog-Style Summaries: Automatically generates blog-style content based on product categories, including:
 
 Top 3 products
 Worst product
 Common complaints from negative reviews
 Differences between top products
+
 BERT Sentiment Analysis: Uses the pre-trained BERT model to predict the sentiment of customer reviews and fine-tunes it on the provided dataset.
 
 Dataset Used
@@ -35,45 +37,42 @@ reviews.username: The username of the customer.
 reviews.date: The date when the review was posted.
 Sample dataset header:
 
-arduino
-Copy code
+
 id, dateAdded, dateUpdated, name, asins, brand, categories, primaryCategories, imageURLs, reviews.numHelpful, reviews.rating, reviews.sourceURLs, reviews.text, reviews.title, reviews.username, sourceURLs, reviews.dateAdded, reviews.userCity, reviews.userProvince
+
 Project Workflow
+
 1. Preprocessing
 Cleaning: Removing unwanted characters, lowercasing, and tokenizing the review text.
 Handling Missing Values: Dropping rows where reviews.text or reviews.rating is missing.
 Sentiment Labeling: Using reviews.rating to label reviews as positive, neutral, or negative.
-2. Sentiment Classification with BERT
+
+3. Sentiment Classification with BERT
 Tokenizing the cleaned review text using BERT tokenizer.
 Fine-tuning the BERT model to classify review sentiment.
 Classifying sentiments into positive, neutral, or negative using the fine-tuned model.
-3. Meta-Category Classification
+
+4. Meta-Category Classification
 Categorizing products based on keywords in the categories column.
 Assigning meta-category labels (e.g., Ebook Readers, Batteries) using predefined keywords.
-4. Blog-Style Article Generation
+
+5. Blog-Style Article Generation
 Summarizing Reviews: Using the BART model to generate summaries for each meta-category.
 Top Products Identification: Identifying the top 3 products based on average rating and review count.
 Worst Product Identification: Selecting the product with the lowest rating.
 Complaints Extraction: Extracting the most common complaints from negative reviews.
-5. Model Evaluation
+
+6. Model Evaluation
 Evaluating model performance using accuracy, F1-score, precision, and recall.
 How to Use
 Step 1: Clone the Repository
-bash
-Copy code
-git clone https://github.com/your-repo/robo-reviews.git
-cd robo-reviews
+
+git clone https://github.com/SaiqaMehdi/RoboReviews-Project/.git
+cd RoboReviews-Project
+
 Step 2: Install Required Libraries
 Install the necessary libraries using pip:
-
-bash
-Copy code
 pip install -r requirements.txt
-Step 3: Run the Flask Web Application
-bash
-Copy code
-python app.py
-Visit http://localhost:5000 to access the file upload interface and see the results.
 
 Requirements
 The project requires the following libraries:
